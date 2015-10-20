@@ -26,6 +26,7 @@ public class Posthandler {
 				}
 			}
 		}
+		//System.out.println(numberOfQuestions);
 		// System.out.println("Total number of Questions : " +
 		// numberOfQuestions.size());
 		// System.out.println("Total number of Answers : " +

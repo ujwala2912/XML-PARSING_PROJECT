@@ -3,7 +3,6 @@ package Parsing_DOM;
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import javax.xml.parsers.DocumentBuilder;
@@ -41,18 +40,21 @@ public class Driver {
 		// gets a map with id's and owner user id
 		Map<String, String> map = UserHandler.handler(document1);
 
-		LinkedList<String> questionUsers = new LinkedList<String>();
-		LinkedList<String> answerUsers = new LinkedList<String>();
-
+		int i = 1;
+		System.out.println("The top 10 users(using DOM) who ask questions are : ");
 		for (String s : top10QuestionUsers) {
-			questionUsers.add(map.get(s));
-		}
-		System.out.println("The top 10 users(using DOM) who ask questions are : " + questionUsers);
 
+			System.out.println(i + ". " + map.get(s));
+			i++;
+
+		}
+
+		int j = 1;
+		System.out.println("\nThe top 10 users(DOM) who answer are : ");
 		for (String s : top10AnswerUsers) {
-			answerUsers.add(map.get(s));
+			System.out.println(j + ". " + map.get(s));
+			j++;
 		}
-		System.out.println("The top 10 users(using DOM) who answer are : " + answerUsers);
-	}
 
+	}
 }

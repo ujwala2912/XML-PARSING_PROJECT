@@ -1,7 +1,6 @@
 package Parsing_SAX;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import org.xml.sax.SAXException;
@@ -12,13 +11,13 @@ public class Driver {
 
 	public static void main(String[] args) throws SAXException, IOException {
 		XMLReader postReader = XMLReaderFactory.createXMLReader();
-		XMLReader UsersReader = XMLReaderFactory.createXMLReader();
+		XMLReader usersReader = XMLReaderFactory.createXMLReader();
 
 		postReader.setContentHandler(new HandlerPosts());
-		UsersReader.setContentHandler(new HandlerUser());
+		usersReader.setContentHandler(new HandlerUser());
 
 		postReader.parse("F:\\posts.xml");
-		UsersReader.parse("F:\\users.xml");
+		usersReader.parse("F:\\users.xml");
 
 		Sorting sorting = new Sorting();
 		CountOccurences count = new CountOccurences();
@@ -32,19 +31,21 @@ public class Driver {
 		List<String> top10QuestionUsers = sorting.sortingByValue(stringsCountQuestions);
 		List<String> top10AnswerUsers = sorting.sortingByValue(stringsCountAnswers);
 
-		List<String> questionUsers = new ArrayList<String>();
-		List<String> answerUsers = new ArrayList<String>();
-
+		int i = 1;
+		System.out.println("The top 10 users(using SAX) who ask questions are : ");
 		for (String s : top10QuestionUsers) {
-			questionUsers.add(HandlerUser.map.get(s));
-		}
-		System.out.println("The top 10 users(using SAX) who ask questions are : " + questionUsers);
 
+			System.out.println(i + ". " + HandlerUser.map.get(s));
+			i++;
+
+		}
+
+		int j = 1;
+		System.out.println("\nThe top 10 users(using SAX) who answer are : ");
 		for (String s : top10AnswerUsers) {
-			answerUsers.add(HandlerUser.map.get(s));
+			System.out.println(j + ". " + HandlerUser.map.get(s));
+			j++;
 		}
-		System.out.println("The top 10 users(using SAX) who answer are : " + answerUsers);
-
 	}
 
 }
